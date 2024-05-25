@@ -3,8 +3,12 @@ import Container from "../container/Container";
 import Logo from "../Logo";
 import UserIcon from "./UserIcon";
 import Logout from "./Logout";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
+   const navigate = useNavigate();
+   const authStatus = useSelector(state=>state.auth.status);
    const navItems = [
       {
          name: "Home",
@@ -14,27 +18,22 @@ function Header() {
       {
          name: "Login",
          slug: "/login",
-         active: !"authStatus",
+         active: !authStatus,
       },
       {
          name: "Signup",
          slug: "/signup",
-         active: !"authStatus",
-      },
-      {
-         name: "Blog",
-         slug: "/all-posts",
-         active: "authStatus",
+         active: !authStatus,
       },
       {
          name: "Add Post",
          slug: "/add-post",
-         active: "authStatus",
+         active: authStatus,
       },
       {
          name: "Feedback",
          slug: "/feedback",
-         active: "authStatus",
+         active: authStatus,
       },
    ];
    return (
@@ -49,7 +48,7 @@ function Header() {
                      item.active ? (
                         <li key={item.name}>
                            <button
-                              //  onClick={()=> navigate(item.slug)}
+                               onClick={()=> navigate(item.slug)}
                               className="inline-block sm:px-6 px-2 sm:text-lg py-2 text-sm font-Inter font-semibold text-black duration-200 hover:text-slate-400"
                            >
                               {item.name}
@@ -57,9 +56,9 @@ function Header() {
                         </li>
                      ) : null
                   )}
-                  {
-                     <li className=" flex items-center gap-x-2">
-                        {/* <Logout /> */}
+                  {authStatus &&
+                     <li className=" gap-x-2">
+                        
                         <UserIcon />
                      </li>
                      }

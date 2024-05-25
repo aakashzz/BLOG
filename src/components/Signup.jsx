@@ -19,6 +19,7 @@ function Signup() {
          if (userData) {
             // alert(userData);
             dispatch(login(userData));
+            navigate("/");
 
             return userData;
          } else {
@@ -38,7 +39,7 @@ function Signup() {
                      <Logo />
                   </div>
                   <h2 className="text-center text-2xl font-bold leading-tight text-black">
-                     Sign up to create account
+                     Sign up to create your account
                   </h2>
                   <p className="mt-2 text-center text-base text-gray-600">
                      Already have an account?{" "}
@@ -50,7 +51,7 @@ function Signup() {
                         Sign In
                      </a>
                   </p>
-                  {error && <p className="text-red-600 p-1">{error}</p>}
+                  {error && <p className="text-red-600 mt-2">{error}</p>}
                   <form onSubmit={handleSubmit(dataSubmit)} className="mt-8">
                      <div className="space-y-5">
                         <div>

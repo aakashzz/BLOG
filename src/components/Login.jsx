@@ -5,18 +5,22 @@ import Input from "./Input";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
 import authService from "../appwrite/authService";
+import { useDispatch } from "react-redux";
+import { login as authLogin } from "../feature/authSlice";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
    const [error, setError] = useState("");
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
    const { register, handleSubmit } = useForm();
    const dataSubmit = async (data) => {
       setError("");
       try {
-         const userLogin = await authService.login(data).then(()=>{
-            console.log("user login")
-         });
+         const userLogin = await authService.login(data)
          if (userLogin) {
-            console.log("user Logged in successfully");
+            dispatch(authLogin(userLogin));
+               navigate("/");
          }
       } catch (error) {
          setError(error.message)
@@ -44,7 +48,7 @@ function Login() {
                         Sign up
                      </a>
                   </p>
-                  {error && <p className="text-red-600 text-xs sm:text-base">{error}</p>}
+                  {error && <p className="text-red-600 text-xs mt-2 text-center sm:text-base">{error}</p>}
                   <form onSubmit={handleSubmit(dataSubmit)} className="mt-8">
                      <div className="space-y-5">
                         <div>
