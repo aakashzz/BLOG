@@ -7,7 +7,7 @@ function Main() {
       <main className="h-auto">
          <Container>
             {/* // slider component ready */}
-            <div className=" w-full h-40 sm:h-fit bg-white border border-gray-300 mt-8 rounded-lg  flex justify-between">
+            <div className=" w-full h-40 sm:h-fit bg-white border border-gray-300 rounded-lg  flex justify-between">
                <div className="p-2 pl-4 sm:w-full w-fit md:p-14 md:w-1/2 ">
                   <h2 className="font-Inter text-sm sm:text-lg font-bold text-purple-600 md:text-2xl ">
                      Monday , 13 May 2024

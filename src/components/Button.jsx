@@ -1,4 +1,4 @@
-import React,{forwardRef} from "react";
+import React from "react";
 
 
 function Button({
@@ -11,7 +11,7 @@ function Button({
 }) {
    return (
       <button
-      className={` text-xs sm:text-sm font-Inter sm:font-medium sm:p-1.5 p-0.5 rounded-full ${className} ${bgColor} ${textColor}`}
+      className={`${className} ${bgColor} ${textColor}`}
       {...props}
       >
         {children}
@@ -19,4 +19,4 @@ function Button({
    );
 }
 
-export default forwardRef(Button);
+export default Button;
