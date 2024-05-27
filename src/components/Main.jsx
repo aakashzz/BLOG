@@ -19,7 +19,7 @@ function Main() {
                             How do you create compelling presentations that wow your
                             colleagues and impress your managers? 
                         </p>
-                        <Button className="mt-2 sm:mt-5 " bgColor="bg-pink-200" textColor="text-red-500" children={"Read More"} />
+                        <Button  bgColor="bg-pink-200" textColor="text-red-500" children={"Read More"} />
                </div>
                <div className="flex w-fit justify-center p-1 sm:p-6">
                   <img

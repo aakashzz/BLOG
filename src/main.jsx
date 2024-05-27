@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import store from "./store/store.js";
 import { Provider } from "react-redux";
 import Home from "./pages/Home.jsx";
@@ -13,48 +13,83 @@ import EditPost from "./pages/EditPost.jsx";
 import Post from "./pages/Post.jsx";
 import Feedback from "./pages/Feedback.jsx";
 import UserProfile from "./pages/UserProfile.jsx";
+import AuthLayout from "./components/AuthLayout.jsx";
+import User from "./components/Header/User.jsx";
+import Signup from "./components/Signup.jsx";
 
 const router = createBrowserRouter([
    {
-      path:"/",
-      element:<App />,
-      children:[
+      path: "/",
+      element: <App />,
+      children: [
          {
-            path:"/",
-            element:<Home />,
-         },{
-            path:"/login",
-            element:<LogIn />
+            path: "/",
+            element: <Home />,
          },
          {
-            path:"/signup",
-            element:<SignUp />
-         },{
-            path:"/add-post",
-            element:<AddPost />
+            path: "/login",
+            element: (
+               <AuthLayout authentication={false}>
+                  <LogIn />
+               </AuthLayout>
+            ),
          },
          {
-            path:"/feedback",
-            element:<Feedback />
-         },{
+            path: "/signup",
+            element: (
+               <AuthLayout authentication={false}>
+                  <SignUp />
+               </AuthLayout>
+            ),
+         },
+         {
+            path: "/add-post",
+            element:(
+               <AuthLayout authentication >
+                  <AddPost />
+               </AuthLayout>
+            )
+         },
+         {
+            path: "/feedback",
+            element:(
+               <AuthLayout authentication >
+                  <Feedback />
+               </AuthLayout>
+            ),
+         },
+         {
             path: "edit-post/:slug",
-            element:<EditPost />,
+            element:(
+               <AuthLayout authentication>
+                  <EditPost />
+               </AuthLayout>
+            ),
          },
          {
-            path:"/user",
-            element:<UserProfile />
-         },{
-            path:"/post/:slug",
-            element:<Post />,
+            path: "/user",
+            element:(
+               <AuthLayout authentication >
+                  <UserProfile />
+               </AuthLayout>
+            ),
+         },
+         {
+            path: "/post/:slug",
+            element: <Post />,
+         },
+         {
+            path:"/user/:slug",
+            element: <User />
          }
-      ]
-   }
-])
+      ],
+   },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
    <React.StrictMode>
       <Provider store={store}>
-         <RouterProvider router={router}/>
+         <RouterProvider router={router} />
       </Provider>
    </React.StrictMode>
 );

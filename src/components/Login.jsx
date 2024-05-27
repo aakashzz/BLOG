@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import authService from "../appwrite/authService";
 import { useDispatch } from "react-redux";
 import { login as authLogin } from "../feature/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
    const [error, setError] = useState("");
@@ -40,13 +40,12 @@ function Login() {
                   </h2>
                   <p className="mt-2 text-center text-base text-gray-600">
                      Don't have an account?{" "}
-                     <a
-                        href="#"
-                        title=""
+                     <Link
+                        to={'/signup'}
                         className="font-medium text-black transition-all duration-200 hover:underline"
                      >
                         Sign up
-                     </a>
+                     </Link>
                   </p>
                   {error && <p className="text-red-600 text-xs mt-2 text-center sm:text-base">{error}</p>}
                   <form onSubmit={handleSubmit(dataSubmit)} className="mt-8">

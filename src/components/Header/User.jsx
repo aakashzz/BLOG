@@ -1,8 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-function UserIcon() {
-  const userName = "Aakash-Malviya"
+function User() {
   return (
    
       <div className='h-16 rounded-full w-fit cursor-pointer'>
@@ -14,4 +13,4 @@ function UserIcon() {
   )
 }
 
-export default UserIcon
+export default User
