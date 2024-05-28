@@ -1,13 +1,12 @@
 import React from "react";
 import Container from "../container/Container";
 import Logo from "../Logo";
-import Logout from "./Logout";
-import { useNavigate } from "react-router-dom";
+import { NavLink, } from "react-router-dom";
 import { useSelector } from "react-redux";
 import User from "./User";
 
 function Header() {
-   const navigate = useNavigate();
+   
    const authStatus = useSelector(state=>state.auth.status);
    const navItems = [
       {
@@ -47,12 +46,13 @@ function Header() {
                   {navItems.map((item) =>
                      item.active ? (
                         <li key={item.name}>
-                           <button
-                               onClick={()=> navigate(item.slug)}
-                              className="inline-block sm:px-6 px-2 sm:text-lg py-2 text-sm font-Inter font-semibold text-black duration-200 hover:text-slate-400 cursor-pointer"
+                           <NavLink
+                               to={item.slug}
+                               className={({isActive}) => 
+                              `inline-block sm:px-6 px-2 sm:text-lg py-2 text-sm font-Inter font-semibold  duration-200 ${isActive ? "text-blue-700" : "text-gray-700"}  cursor-pointer`}
                            >
                               {item.name}
-                           </button>
+                           </NavLink>
                         </li>
                      ) : null
                   )}

@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import { login, logout } from "./feature/authSlice";
 import authService from "./appwrite/authService";
 import { useDispatch } from "react-redux";
+import Loading from "./components/Loading";
 
 function App() {
    const [loading, setLoading] = useState(true);
@@ -23,11 +24,7 @@ function App() {
    }, []);
 
    return loading ? (
-      <div className="w-full h-screen gap-x-2 flex justify-center items-center">
-         <div className="w-5 bg-[#d991c2] animate-pulse h-5 rounded-full animate-bounce"></div>
-         <div className="w-5 animate-pulse h-5 bg-[#9869b8] rounded-full animate-bounce"></div>
-         <div className="w-5 h-5 animate-pulse bg-[#6756cc] rounded-full animate-bounce"></div>
-      </div>
+      <Loading />
    ) : (
       <div className="min-h-screen flex flex-wrap content-between">
          <div className="w-full block">
