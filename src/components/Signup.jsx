@@ -7,22 +7,22 @@ import { useForm } from "react-hook-form";
 import authService from "../appwrite/authService";
 import { login } from "../feature/authSlice";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
    const dispatch = useDispatch();
    const { register, handleSubmit } = useForm();
+   const navigate = useNavigate();
    const [error, setError] = useState("");
-   const dataSubmit = async (value) => {
+   const create = async (data) => {
       setError("");
       try {
-         const userData = await authService.createAccount(value);
-         if (userData) {
-            // alert(userData);
-            dispatch(login(userData));
-            navigate("/");
-
-            return userData;
+         const userData = await authService.createAccount(data)
+            if (userData) {
+                const userData = await authService.getCurrentUser()
+                if(userData) dispatch(login(userData));
+                navigate("/")
+            
          } else {
             console.log("create account failed");
          }
@@ -52,7 +52,7 @@ function Signup() {
                      </Link>
                   </p>
                   {error && <p className="text-red-600 mt-2">{error}</p>}
-                  <form onSubmit={handleSubmit(dataSubmit)} className="mt-8">
+                  <form onSubmit={handleSubmit(create)} className="mt-8">
                      <div className="space-y-5">
                         <div>
                            <Input

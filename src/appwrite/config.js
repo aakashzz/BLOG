@@ -86,9 +86,10 @@ class Service {
             return await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
-                file,
-            )
+                file
+            ).then((err)=>console.log(err))
         } catch (error) {
+         console.log(error)
             throw error;
         }
    }

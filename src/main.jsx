@@ -14,7 +14,6 @@ import Post from "./pages/Post.jsx";
 import Feedback from "./pages/Feedback.jsx";
 import UserProfile  from "./pages/UserProfile.jsx";
 import AuthLayout from "./components/AuthLayout.jsx";
-import User from "./components/Header/User.jsx";
 
 
 const router = createBrowserRouter([
@@ -79,10 +78,6 @@ const router = createBrowserRouter([
             path: "/post/:slug",
             element: <Post />,
          },
-         {
-            path:"/user/:slug",
-            element: <User />
-         }
       ],
    },
 ]);
