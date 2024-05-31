@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from './container/Container'
 
-function Post() {
+function Post({userName, dateTime, content,}) {
   return (
     <div className='py-8 border'>
         <Container>

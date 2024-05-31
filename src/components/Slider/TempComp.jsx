@@ -3,6 +3,7 @@ import AwesomeSlider from "react-awesome-slider";
 import "react-awesome-slider/dist/styles.css";
 import Container from "../container/Container";
 import Main from "../Main";
+import Post from "../Post";
 
 function TempComp() {
    const mainItems = [
@@ -29,7 +30,7 @@ function TempComp() {
       },
    ];
    return (
-      <div className="h-fit">
+      <div className="h-auto">
          <Container>
             <AwesomeSlider className="h-[200px] sm:h-fit lg:h-[400px] ">
                {mainItems.map((item) => (
@@ -47,8 +48,8 @@ function TempComp() {
             <h1 className="font-Inter lg:text-2xl sm:text-xl text-base font-bold">
                Recently Post
             </h1>
-            <div className="">
-               
+            <div className="h-">
+               <Post />
             </div>
          </div>
          </Container>
