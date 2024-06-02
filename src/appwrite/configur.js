@@ -114,6 +114,16 @@ export class Service {
             throw error;
         }
    }
+   getFileView(fileId){
+      try {
+         return this.bucket.getFileView(
+            conf.appwriteBucketId,
+            fileId
+         )
+      } catch (error) {
+         
+      }
+   }
 }
 
 const service = new Service();

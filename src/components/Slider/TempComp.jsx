@@ -34,7 +34,7 @@ function TempComp() {
          <Container>
             <AwesomeSlider className="h-[200px] sm:h-fit lg:h-[400px] ">
                {mainItems.map((item) => (
-                  <div>
+                  <div key={item.userName}>
                      <Main
                         userName={item.userName}
                         content={item.content}
@@ -46,11 +46,8 @@ function TempComp() {
             </AwesomeSlider>
          <div className=" h-auto w-full mt-10 px-4">
             <h1 className="font-Inter lg:text-2xl sm:text-xl text-base font-bold">
-               Recently Post
+               Recently Article
             </h1>
-            <div className="h-">
-               <Post />
-            </div>
          </div>
          </Container>
       </div>

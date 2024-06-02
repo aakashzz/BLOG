@@ -27,9 +27,9 @@ function App() {
       <Loading />
    ) : (
       <div className="min-h-screen flex flex-wrap content-between">
-         <div className="w-full block">
+         <div className="w-full h-full block">
             <Header />
-            <main className="h-fit">
+            <main className="h-auto">
                <Outlet />
             </main>
             <Footer />

@@ -3,7 +3,7 @@ import Container from './container/Container'
 
 function Post({userName, dateTime, content,}) {
   return (
-    <div className='py-8 border'>
+    <div className='py-8 border '>
         <Container>
             <div className='grid  justify-items-center'>
                 <div className='flex justify-center'>
