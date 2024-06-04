@@ -3,6 +3,7 @@ import Logout from "../components/Header/Logout";
 import Container from "../components/container/Container";
 import authService from "../appwrite/authService";
 import Loading from "../components/Loading";
+import appwriteService from '../appwrite/configur'
 
 function UserProfile() {
    const [loading, setLoading] = useState(true);
@@ -14,9 +15,11 @@ function UserProfile() {
             .then((user) => setData(user))
             .finally(() => setLoading(false));
       }
+      else if(loading){
+      }
    }, [loading]);
    return (
-      <div className="h-screen">
+      <div className="h-full">
          <Container>
             {loading ? (
                <>
@@ -46,11 +49,21 @@ function UserProfile() {
                         </div>
                      </div>
                   </div>
-                  <div className=" h-auto w-full mt-4">
+                  <div className=" w-full mt-4">
                      <h1 className="font-Inter lg:text-2xl sm:text-xl text-base font-bold">
                         Post:
                      </h1>
-                     <div className="h-auto w-3/4"></div>
+                     <div className="h-auto w-auto grid grid-cols-3 gap-x-2 gap-y-4 pt-4">
+                        <div className="border w-full">
+                           <img src="../../public/API.png" className="p-2 w-full" alt="" />
+                        </div>
+                        <div className="border w-full">
+                           <img src="../../public/Imagedemopng.png" className="p-2 w-full" alt="" />
+                        </div>
+                        <div className="border w-full">
+                           <img src="../../public/Imagedemopng.png" className="p-2 w-full" alt="" />
+                        </div>
+                     </div>
                   </div>
                </>
             )}

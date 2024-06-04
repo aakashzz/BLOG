@@ -1,35 +1,30 @@
 import React, { useState } from "react";
 import Container from "./container/Container";
-import Logo from "./Logo";
-import Input from "./Input";
 import Button from "./Button";
+import Input from "./Input";
+import Logo from "./Logo";
+import appwriteService from "../appwrite/configur";
 import { useForm } from "react-hook-form";
-import authService from "../appwrite/authService";
-import { useDispatch } from "react-redux";
-import { login as authLogin } from "../feature/authSlice";
-import { Link, useNavigate } from "react-router-dom";
-
-function Login() {
-   const [error, setError] = useState("");
-   const dispatch = useDispatch();
-   const navigate = useNavigate();
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+function Feedback() {
+   const [error, setError] = useState();
    const { register, handleSubmit } = useForm();
-   const dataSubmit = async (data) => {
-      setError("");
+   const navigate = useNavigate();
+   const feedbackSubmit = async (data) => {
+      debugger;
       try {
-         const userLogin = await authService.login(data)
-         if (userLogin) {
-            dispatch(authLogin(userLogin));
-            
-               navigate("/");
+         const feedbackData = await appwriteService.createFeedback({ ...data });
+         if (feedbackData) {
+            navigate("/");
          }
       } catch (error) {
-         setError(error.message)
-         // error.message;
+         setError(error.message);
+         throw error;
       }
    };
    return (
-      <div>
+      <div className="py-2">
          <Container>
             <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 ">
                <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md ">
@@ -37,20 +32,23 @@ function Login() {
                      <Logo />
                   </div>
                   <h2 className="text-center text-2xl font-bold leading-tight text-black">
-                     Login to already have account
+                     Give your feedback about of experience
                   </h2>
-                  <p className="mt-2 text-center text-base text-gray-600">
-                     Don't have an account?{" "}
-                     <Link
-                        to={'/signup'}
-                        className="font-medium text-black transition-all duration-200 hover:underline"
-                     >
-                        Sign up
-                     </Link>
-                  </p>
-                  {error && <p className="text-red-600 text-xs mt-2 text-center sm:text-base">{error}</p>}
-                  <form onSubmit={handleSubmit(dataSubmit)} className="mt-8">
+                  {error && <p className="text-red-600 mt-2">{error}</p>}
+                  <form
+                     className="mt-8"
+                     onSubmit={handleSubmit(feedbackSubmit)}
+                  >
                      <div className="space-y-5">
+                        <div>
+                           <Input
+                              label="Full Name"
+                              type="text"
+                              placeholder="Full Name"
+                              className="mt-2"
+                              {...register("name", { required: true })}
+                           />
+                        </div>
                         <div>
                            <Input
                               label="Email"
@@ -71,12 +69,18 @@ function Login() {
                         </div>
                         <div>
                            <div>
-                              <Input
-                                 label="Password"
-                                 type="password"
-                                 placeholder="Password"
-                                 className="mt-2"
-                                 {...register("password", { required: true })}
+                              <label
+                                 htmlFor=""
+                                 className="text-base font-medium text-gray-900"
+                              >
+                                 Additional FeedBack:
+                              </label>
+                              <textarea
+                                 rows={8}
+                                 className="w-full border rounded-md border-gray-300 p-2 outline-none"
+                                 {...register("feedback", {
+                                    required: true,
+                                 })}
                               />
                            </div>
                         </div>
@@ -87,7 +91,7 @@ function Login() {
                               textColor="text-white"
                               className="inline-flex w-full items-center justify-center rounded-md  px-3.5 py-2.5 font-semibold leading-7  hover:bg-blue-950"
                            >
-                              Login
+                              Submit Feedback
                            </Button>
                         </div>
                      </div>
@@ -99,4 +103,4 @@ function Login() {
    );
 }
 
-export default Login;
+export default Feedback;

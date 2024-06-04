@@ -44,11 +44,11 @@ function TempComp() {
                   </div>
                ))}
             </AwesomeSlider>
-         <div className=" h-auto w-full mt-10 px-4">
-            <h1 className="font-Inter lg:text-2xl sm:text-xl text-base font-bold">
-               Recently Article
-            </h1>
-         </div>
+            <div className=" h-auto w-full mt-10 px-4">
+               <h1 className="font-Inter lg:text-2xl sm:text-xl text-base font-bold">
+                  Recently Article
+               </h1>
+            </div>
          </Container>
       </div>
    );

@@ -10,8 +10,6 @@ function Home() {
          .then((data) => {
             if (data) {
                if (data.documents.length === data.total) {
-                  //   console.log(data.total);
-                  //   console.log(data.documents);
                   setPosts(data.documents);
                }
             }

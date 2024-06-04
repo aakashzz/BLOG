@@ -1,31 +1,62 @@
-import React from 'react'
-import Container from './container/Container'
-
-function Post({userName, dateTime, content,}) {
-  return (
-    <div className='py-8 border '>
-        <Container>
-            <div className='grid  justify-items-center'>
-                <div className='flex justify-center'>
-                    <img src="../../public/post.png" className=' w-80 sm:w-auto md:w-auto' alt="" />
-                </div>
-                <div className='w-80 sm:w-full py-8 lg:px-44'>
-                    <h2 className="font-Inter text-xs    sm:text-lg font-bold  text-purple-600 md:text-2xl md:text-left ">
-                        Monday , 13 May 2024
-                    </h2>
-                    <p className="font-Inter text-sm sm:text-xl font-bold  md:text-3xl md:pt-2 md:text-left">
-                        Frontend Development
-                    </p>
-                    <p className="  sm:w-full sm:pt-5 font-Inter text-xs sm:text-base pt-2  md:text-left">
-                                How do you create compelling presentations that wow your
-                                colleagues and impress your managers?{" "}
-                    </p>
-                    
-                </div>
-            </div>
-        </Container>
-    </div>
-  )
+import React, { useState, useEffect } from "react";
+import Container from "./container/Container";
+import { useNavigate, useParams } from "react-router-dom";
+import appwriteService from "../appwrite/configur";
+import parse from "html-react-parser";
+import Loading from "./Loading";
+function Post() {
+   const [loading, setLoading] = useState(true);
+   const [posts, setPosts] = useState(null);
+   const { slug } = useParams();
+   const navigate = useNavigate();
+   useEffect(() => {
+      appwriteService
+         .getPost(slug)
+         .then((data) => {
+            if (data) {
+               // console.log(data)
+               setPosts(data);
+               setLoading(false);
+            } else {
+               navigate("/");
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
+   }, [posts]);
+   return (
+      <div className="py-8 border ">
+         <Container>
+            {loading ? (
+               <Loading />
+            ) : (
+               <div className="grid lg:px-44 justify-items-center">
+                  <div className="flex justify-center">
+                     <img
+                        src={appwriteService.getFilePreview(
+                           posts.featuredImage
+                        )}
+                        className=" w-80 sm:w-[90%] md:w-[90%]"
+                        alt=""
+                     />
+                  </div>
+                  <div className="w-80 sm:w-[90%] py-10 ">
+                     <h2 className="font-Inter text-xs    sm:text-lg font-bold  text-purple-600 md:text-2xl md:text-left ">
+                        {posts.$createdAt.substring(0,10)}
+                     </h2>
+                     <p className="font-Inter text-sm sm:text-xl font-bold  md:text-3xl md:pt-2 md:text-left">
+                        {posts.title}
+                     </p>
+                     <p className="  sm:w-full sm:pt-5 font-Inter text-xs sm:text-base pt-2  md:text-left">
+                        {parse(posts.content)}
+                     </p>
+                  </div>
+               </div>
+            )}
+         </Container>
+      </div>
+   );
 }
 
-export default Post
+export default Post;

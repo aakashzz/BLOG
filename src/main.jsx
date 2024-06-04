@@ -10,10 +10,10 @@ import LogIn from "./pages/LogIn.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import AddPost from "./pages/AddPost.jsx";
 import EditPost from "./pages/EditPost.jsx";
-import Post from "./pages/Post.jsx";
-import Feedback from "./pages/Feedback.jsx";
+import Post from "./components/Post.jsx";
 import UserProfile  from "./pages/UserProfile.jsx";
 import AuthLayout from "./components/AuthLayout.jsx";
+import FeedBack from "./pages/FeedBack.jsx";
 
 
 const router = createBrowserRouter([
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
             path: "/feedback",
             element:(
                <AuthLayout authentication >
-                  <Feedback />
+                  <FeedBack />
                </AuthLayout>
             ),
          },

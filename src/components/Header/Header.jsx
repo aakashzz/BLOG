@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import User from "./User";
 
 function Header() {
-   
+
    const authStatus = useSelector(state=>state.auth.status);
    const navItems = [
       {
@@ -38,11 +38,11 @@ function Header() {
    return (
       <header className=" shadow ">
          <Container>
-            <nav className="flex">
+            <nav className="md:flex">
                <div className="mr-4">
                   <Logo />
                </div>
-               <ul className="flex ml-auto items-center">
+               <ul className="md:flex ml-auto items-center justify-end md:justify-normal">
                   {navItems.map((item) =>
                      item.active ? (
                         <li key={item.name}>
@@ -57,7 +57,7 @@ function Header() {
                      ) : null
                   )}
                   {authStatus &&
-                     <li className=" gap-x-2">
+                     <li className=" w-14  md:gap-2 md:w-auto">
                         <User />
                      </li>
                      }

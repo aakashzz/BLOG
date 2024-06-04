@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import Feedback from "../components/Feedback";
 
-function Feedback() {
-  return (
-    <div>
-      
-    </div>
-  )
+function FeedBack() {
+   return <div><Feedback /></div>;
 }
 
-export default Feedback
+export default FeedBack;
