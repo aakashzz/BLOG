@@ -17,8 +17,6 @@ function EditPost() {
             .then((post) => {
                if (post) {
                   setPosts(post);
-
-                  // console.log(posts)
                }
             })
             .finally(()=>setLoading(false));
