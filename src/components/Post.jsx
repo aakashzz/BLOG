@@ -58,18 +58,18 @@ function Post() {
                      <h2 className="font-Inter text-xs    sm:text-lg font-bold  text-purple-600 md:text-2xl md:text-left ">
                         {posts.$createdAt.substring(0, 10)}
                      </h2>
-                     <p className="font-Inter text-sm sm:text-xl font-bold  md:text-3xl md:pt-2 md:text-left">
+                     <title className="font-Inter text-sm sm:text-xl font-bold  md:text-3xl md:pt-2 md:text-left">
                         {posts.title}
-                     </p>
-                     <p className="  sm:w-full sm:pt-5 font-Inter text-xs sm:text-base pt-2  md:text-left">
+                     </title>
+                     <article className="  sm:w-full sm:pt-5 font-Inter text-xs sm:text-base pt-2  md:text-left">
                         {parse(posts.content)}
-                     </p>
+                     </article>
                      {isAuthor ? (
                         <div className="py-2">
                            <Link to={`/edit-post/${posts.$id}`}>
                               <Button
                                  bgColor="bg-green-200"
-                                 className="mr-3 text-green-700 px-3 py-0.5 sm:px-4 sm:py-0.5 rounded-full text-xs sm:text-base font-medium" 
+                                 className="mr-3 text-green-700 px-3 py-0.5 sm:px-4 sm:py-0.5 rounded-full text-xs sm:text-base font-medium"
                               >
                                  Edit
                               </Button>
@@ -83,8 +83,13 @@ function Post() {
                               Delete
                            </Button>
                         </div>
-                     )
-                  :(<><p className="text-xs text-red-500 pt-4">Use are not author his post that not show button</p></>)}
+                     ) : (
+                        <>
+                           <p className="text-xs text-red-500 pt-4">
+                              Use are not author his post that not show button
+                           </p>
+                        </>
+                     )}
                   </div>
                </div>
             )}

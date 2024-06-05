@@ -3,28 +3,21 @@ import Logout from "../components/Header/Logout";
 import Container from "../components/container/Container";
 import authService from "../appwrite/authService";
 import Loading from "../components/Loading";
-import appwriteService from "../appwrite/configur";
+
 
 function UserProfile() {
    const [loading, setLoading] = useState(true);
-   const [post, setPost] = useState([]);
    const [data, setData] = useState("");
    useEffect(() => {
       if (loading) {
          authService
             .getCurrentUser()
             .then((user) => {
-               setData(user);
-               appwriteService.getPost([]).then((value) => {
-                  const dataPost = value.documents.filter(() => {
-                     value.documents[0].userId === user.$id;
-                  });
-                  setPost(dataPost);
-               });
+              setData(user)
             })
             .finally(() => setLoading(false));
       }
-      console.log(post);
+      
    }, [loading]);
    return (
       <div className="h-full">
