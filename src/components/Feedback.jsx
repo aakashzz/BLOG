@@ -6,13 +6,11 @@ import Logo from "./Logo";
 import appwriteService from "../appwrite/configur";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 function Feedback() {
    const [error, setError] = useState();
    const { register, handleSubmit } = useForm();
    const navigate = useNavigate();
    const feedbackSubmit = async (data) => {
-      debugger;
       try {
          const feedbackData = await appwriteService.createFeedback({ ...data });
          if (feedbackData) {
