@@ -84,6 +84,7 @@ export class Service {
          throw error;
       }
    }
+   
    async getPost(slug) {
       try {
          return await this.database.getDocument(
@@ -116,9 +117,9 @@ export class Service {
          throw error;
       }
    }
-   getFilePreview(fileId) {
+    getFilePreview(fileId) {
       try {
-         return this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
+         return  this.bucket.getFilePreview(conf.appwriteBucketId, fileId);
       } catch (error) {
          throw error;
       }

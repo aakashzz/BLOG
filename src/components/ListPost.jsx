@@ -4,7 +4,7 @@ import Button from "./Button";
 import appwriteService from "../appwrite/configur";
 import { useNavigate } from "react-router-dom";
 import parse from "html-react-parser";
-function ListPost({ $id, content, title, featuredImage,$createdAt }) {
+function ListPost({ $id, content, title, featuredImage }) {
    const navigate = useNavigate();
    function openPost() {
       navigate(`/post/${$id}`);
@@ -24,17 +24,17 @@ function ListPost({ $id, content, title, featuredImage,$createdAt }) {
                   <h2 className="font-Inter text-[12px] font-bold  text-purple-600 sm:text-xl  ">
                   {/* {$createdAt.substring(0,10)} */}
                   </h2>
-                  <p className="font-Inter text-sm sm:text-2xl font-bold md:pt-2 ">
+                  <h3 className="font-Inter text-sm sm:text-2xl font-bold md:pt-2 ">
                      {title}
-                  </p>
-                  <p  className=" w-fit h-fit sm:w-full pt-1 font-Inter text-black sm:pt-5 text-[7px] sm:text-sm" >
+                  </h3>
+                  <article  className=" w-fit h-fit sm:w-full pt-1 font-Inter text-black sm:pt-5 text-[7px] sm:text-sm" >
                      {parse(content)}
-                  </p>
+                  </article>
                   <Button
                      onClick={openPost}
                      bgColor="bg-pink-200"
                      textColor="text-red-500"
-                     className='font-Inter text-[8px] rounded-md px-1 sm:text-sm sm:rounded-lg font-semibold'
+                     className='font-Inter text-[8px] rounded-xl px-1.5 py-0.5 sm:text-sm sm:rounded-lg font-medium mt-2'
                   >
                      More About
                   </Button>

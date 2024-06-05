@@ -3,20 +3,28 @@ import Logout from "../components/Header/Logout";
 import Container from "../components/container/Container";
 import authService from "../appwrite/authService";
 import Loading from "../components/Loading";
-import appwriteService from '../appwrite/configur'
+import appwriteService from "../appwrite/configur";
 
 function UserProfile() {
    const [loading, setLoading] = useState(true);
+   const [post, setPost] = useState([]);
    const [data, setData] = useState("");
    useEffect(() => {
       if (loading) {
          authService
             .getCurrentUser()
-            .then((user) => setData(user))
+            .then((user) => {
+               setData(user);
+               appwriteService.getPost([]).then((value) => {
+                  const dataPost = value.documents.filter(() => {
+                     value.documents[0].userId === user.$id;
+                  });
+                  setPost(dataPost);
+               });
+            })
             .finally(() => setLoading(false));
       }
-      else if(loading){
-      }
+      console.log(post);
    }, [loading]);
    return (
       <div className="h-full">
@@ -49,22 +57,41 @@ function UserProfile() {
                         </div>
                      </div>
                   </div>
-                  <div className=" w-full mt-4">
-                     <h1 className="font-Inter lg:text-2xl sm:text-xl text-base font-bold">
-                        Post:
-                     </h1>
-                     <div className="h-auto w-auto grid grid-cols-3 gap-x-2 gap-y-4 pt-4">
-                        <div className="border w-full">
-                           <img src="../../public/API.png" className="p-2 w-full" alt="" />
-                        </div>
-                        <div className="border w-full">
-                           <img src="../../public/Imagedemopng.png" className="p-2 w-full" alt="" />
-                        </div>
-                        <div className="border w-full">
-                           <img src="../../public/Imagedemopng.png" className="p-2 w-full" alt="" />
+                  <section className="px-2">
+                     <div className="mx-auto max-w-7xl py-10">
+                        <div>
+                           <div className="max-w-2xl">
+                              <h1 className="text-2xl font-bold text-black">
+                                 Frequently Asked Questions
+                              </h1>
+                              <p className="mt-4 text-sm leading-6 tracking-wide text-gray-500">
+                                 Lorem ipsum dolor sit amet, consectetur
+                                 adipiscing elit, sed do eiusmod tempor
+                                 incididunt ut labore et dolore magna aliqua. Ut
+                                 enim ad minim veniam.
+                              </p>
+                           </div>
+                           <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+                              {Array.from({ length: 3 }).map((_, i) => (
+                                 <div
+                                    key={i}
+                                    className="rounded-md border border-black/30 p-6"
+                                 >
+                                    <dt className="text-lg font-semibold leading-6 text-gray-900">
+                                       How do I get started?
+                                    </dt>
+                                    <dd className="mt-2 text-sm text-gray-500">
+                                       Lorem ipsum dolor sit amet consectetur,
+                                       adipisicing elit. In, et? Obcaecati, nemo
+                                       sit. Delectus, totam obcaecati aliquid
+                                       omnis cumque ex.
+                                    </dd>
+                                 </div>
+                              ))}
+                           </div>
                         </div>
                      </div>
-                  </div>
+                  </section>
                </>
             )}
          </Container>
