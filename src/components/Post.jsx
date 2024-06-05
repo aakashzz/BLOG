@@ -69,7 +69,7 @@ function Post() {
                            <Link to={`/edit-post/${posts.$id}`}>
                               <Button
                                  bgColor="bg-green-200"
-                                 className="mr-3 text-green-700 px-4 py-0.5 rounded-full font-medium"
+                                 className="mr-3 text-green-700 px-3 py-0.5 sm:px-4 sm:py-0.5 rounded-full text-xs sm:text-base font-medium" 
                               >
                                  Edit
                               </Button>
@@ -78,7 +78,7 @@ function Post() {
                               bgColor="bg-red-200"
                               onClick={deletePost}
                               textColor="text-red-600"
-                              className="font-medium px-2 py-0.5 rounded-full "
+                              className="font-medium px-2 py-0.5 rounded-full text-xs sm:text-base "
                            >
                               Delete
                            </Button>
