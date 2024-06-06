@@ -16,7 +16,7 @@ function Footer() {
          </Link>
        </div>
        <div className="w-auto p-8">
-         <ul className="-m-5 flex flex-wrap items-center">
+         <ul className="-m-5 flex flex-wrap items-center text-base md:text-medium">
            <li className="p-5">
              <Link className="font-medium text-gray-600 hover:text-gray-700" to="#">
                Privacy Policy
@@ -59,7 +59,7 @@ function Footer() {
                </div>
              </Link>
            </div>
-           <div className="w-auto p-1.8">
+           <div className="w-auto p-1.5">
              <Link href="#">
                <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400">
                  <svg

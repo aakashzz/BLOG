@@ -44,7 +44,7 @@ function Post() {
             {loading ? (
                <Loading />
             ) : (
-               <div className="grid lg:px-44 justify-items-center">
+               <div className="grid lg:px-44 justify-items-center ">
                   <div className="flex justify-center">
                      <img
                         src={appwriteService.getFilePreview(
