@@ -6,7 +6,7 @@ function User() {
    
       <div className='h-16 rounded-full w-fit cursor-pointer'>
         <Link to={`/user`}> 
-            <img src="../../../public/userIcon.svg" className='h-16 rounded-full' alt="" />
+            <img src="../../../public/static/userIcon.svg" className='h-16 rounded-full' alt="" />
         </Link>
       </div>
    
