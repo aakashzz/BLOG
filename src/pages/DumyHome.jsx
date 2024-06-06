@@ -27,7 +27,7 @@ function DumyHome() {
                <div className="relative lg:col-span-5 lg:-mr-8 xl:col-span-6">
                   <img
                      className=" bg-white "
-                     src="../../public/blog-poster.jpeg"
+                     src="../../public/static/blog-poster.jpeg"
                   />
                </div>
             </div>
