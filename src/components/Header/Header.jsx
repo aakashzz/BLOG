@@ -49,7 +49,7 @@ function Header() {
                   <div className=" h-10 w-full flex justify-end  lg:hidden  ">
                      <button id="nav-toggle" className=" focus:outline-none duration-200" onClick={showNavigation}>
                         <img
-                           src="../../../public/menubar.svg"
+                           src="../../../public/static/menubar.svg"
                            className="w-8 "
                            alt=""
                         />
