@@ -7,6 +7,7 @@ import {
    Star,
    X,
 } from "lucide-react";
+import images from '../../public/static/blog-poster.jpeg'
 function DumyHome() {
    return (
       <div className="w-full">
@@ -22,18 +23,17 @@ function DumyHome() {
                      changes etc meaning full article/ Content storing that new
                      GenZ scaling a new journey.
                   </p>
-                  
                </div>
                <div className="relative lg:col-span-5 lg:-mr-8 xl:col-span-6">
                   <img
                      className=" bg-white "
-                     src="../../public/static/blog-poster.jpeg"
+                     src={images}
                   />
                </div>
             </div>
          </div>
          {/* Features Section */}
-        
+
          {/* FAQs */}
          <section className="mx-auto max-w-7xl bg-white px-2 py-14 md:px-0">
             <div>
@@ -42,7 +42,7 @@ function DumyHome() {
                      Frequently Asked Questions
                   </h2>
                   <p className="mt-4 max-w-xl text-base leading-relaxed text-gray-600 lg:mx-auto">
-                    some question about BLOG
+                     some question about BLOG
                   </p>
                </div>
                <div className="mx-auto mt-8 max-w-3xl space-y-4 md:mt-16">
@@ -59,7 +59,8 @@ function DumyHome() {
                      </button>
                      <div className="px-4 pb-5 sm:px-6 sm:pb-6">
                         <p className="text-gray-500">
-                           Go Login/ Signup page and enter information than login and enjoy.
+                           Go Login/ Signup page and enter information than
+                           login and enjoy.
                         </p>
                      </div>
                   </div>
@@ -94,9 +95,6 @@ function DumyHome() {
             </div>
          </section>
          {/* Pricing Section */}
-         
-
-       
 
          {/* footer */}
       </div>

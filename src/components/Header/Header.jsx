@@ -4,6 +4,7 @@ import Logo from "../Logo";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import User from "./User";
+import optionImg from '../../../public/static/menubar.svg'
 
 function Header() {
    const [menuOption, setMenuOption] = useState("hidden");
@@ -49,7 +50,7 @@ function Header() {
                   <div className=" h-10 w-full flex justify-end  lg:hidden  ">
                      <button id="nav-toggle" className=" focus:outline-none duration-200" onClick={showNavigation}>
                         <img
-                           src="../../../public/static/menubar.svg"
+                           src={optionImg}
                            className="w-8 "
                            alt=""
                         />
