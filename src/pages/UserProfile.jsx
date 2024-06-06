@@ -3,7 +3,7 @@ import Logout from "../components/Header/Logout";
 import Container from "../components/container/Container";
 import authService from "../appwrite/authService";
 import Loading from "../components/Loading";
-
+import DP from '../../public/static/DP.svg'
 
 function UserProfile() {
    const [loading, setLoading] = useState(true);
@@ -32,7 +32,7 @@ function UserProfile() {
                      <div className="flex h-full  justify-center gap-2">
                         <div className=" h-fit w-auto pt-6 sm:p-4 ">
                            <img
-                              src="../../public/DP.svg"
+                              src={DP}
                               className=" rounded-full w-20 sm:w-32 lg:w-40 "
                               alt=""
                            />
