@@ -8,23 +8,25 @@ import {
    X,
 } from "lucide-react";
 import images from '../../public/static/blog-poster.jpeg'
+import Container from "../components/container/Container";
 function DumyHome() {
    return (
-      <div className="w-full">
+      <div className="w-full  ">
+         <Container>
          {/* Hero Section */}
-         <div className="relative w-full py-10 bg-white">
-            <div className="mx-auto max-w-8xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-               <div className="flex flex-col justify-center px-4 py-12 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-24 xl:col-span-6">
-                  <h1 className="mt-8 text-3xl font-bold tracking-tight text-black md:text-4xl lg:text-6xl">
+         <div className="relative w-full py-14 bg-white">
+            <div className="mx-auto max-w-8xl lg:grid lg:grid-cols-12 lg:gap-x-2 lg:px-8">
+               <div className="flex flex-col justify-center px-4 py-12 md:py-10 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-12 xl:col-span-6">
+                  <h1 className="mt-8 text-3xl font-bold tracking-tight text-black md:text-4xl lg:text-5xl">
                      Let's grow with BLOG
                   </h1>
-                  <p className="mt-8 text-lg text-gray-700">
+                  <p className="md:mt-8 mt-4 md:text-lg text-base text-gray-700">
                      A BLOG is a social and resource, technology and futuristic
                      changes etc meaning full article/ Content storing that new
                      GenZ scaling a new journey.
                   </p>
                </div>
-               <div className="relative lg:col-span-5 lg:-mr-8 xl:col-span-6">
+               <div className="relative lg:col-span-5 lg:-mr-8 xl:col-span-6 ">
                   <img
                      className=" bg-white "
                      src={images}
@@ -94,6 +96,7 @@ function DumyHome() {
                </p>
             </div>
          </section>
+         </Container>
          {/* Pricing Section */}
 
          {/* footer */}

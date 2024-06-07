@@ -76,7 +76,7 @@ function Header() {
                      ) : null
                   )}
                   {authStatus && (
-                     <li className=" w-12 md:gap-2 md:w-auto">
+                     <li className=" w-12 md:gap-2 md:w-auto px-4">
                         <User />
                      </li>
                   )}
